@@ -1,0 +1,24 @@
+package rules
+
+import model.Card
+import model.Balance
+import model.CardData
+import model.Status
+
+global java.lang.Integer countOpen
+global java.lang.Integer countActive
+
+rule "get OpenCards"
+    when
+    $c : Card(getCardData().getTarif()  == "Opencard Зарплатная")
+    then
+       insert(countOpen + 1);
+end
+
+rule "get Active Card"
+    when
+    $c: Card(getCardData().getStatus().getStatusCode() == "00" && getCardData().getStatus().getPlasticStatus() == "Active")
+    then
+        countActive = countActive + 1;
+end
+

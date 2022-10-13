@@ -1,0 +1,12 @@
+package rules
+
+import model.Card
+import model.Balance
+import model.CardData
+import model.Status
+
+
+rule "update tarif"
+    when
+    then
+end
